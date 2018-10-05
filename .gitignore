@@ -7,7 +7,7 @@
 !*.*
 
 # Unignore all dirs
-!*/
+!/**/
 
 ### VisualStudioCode ###
 .vscode/
