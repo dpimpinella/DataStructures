@@ -8,22 +8,27 @@
 
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 int main(){
   int i = 7;
   int* pi;
   pi = &i;
   
-  cout << "Integer i = " << i << endl;
-  cout << "The address of the pointer to i, pi = " << pi << endl;
-  cout << "The dereferenced pointer to i, *pi = " << *pi << endl;
+  cout << "Integer i = " << i << "\n\n";
+  
+  cout << "pi = " << pi << endl;
+  cout << "The dereference of pi = " << *pi << endl;
+  cout << "The address pi = " << &pi << endl;
+  cout << "The address of i = " << &i << "\n\n";
   
   int** ppi;
   ppi = &pi;
   
-  cout << "Pointer to pointer pi, ppi = " << ppi << endl;
-  cout << "The address of the pointer to the pointer pi, ppi = " << ppi <<endl;
-  cout << "The dereference of the pointer to pointer pi, ppi = " << *ppi << endl;
-  cout << "The double dereference of the pointer to pointer pi, ppi = " << **ppi <<endl;
+  cout << "ppi = " << ppi <<endl;
+  cout << "The dereference of ppi = " << *ppi << endl;
+  cout << "The address of ppi = " << &ppi << endl;
+  cout << "The double dereference of ppi = " << **ppi <<"\n\n";
+  system(PAUSE);
 }
