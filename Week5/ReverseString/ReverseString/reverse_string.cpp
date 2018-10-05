@@ -1,5 +1,5 @@
 //
-//  main.cpp
+//  reverse_string.cpp
 //  ReverseString
 //
 //  Created by Dominic Pimpinella on 10/4/18.
@@ -31,11 +31,8 @@ void GetUserInput() {
   ReverseString(user_string);
   cout << "Enter another string? 1 = continue. Anything else to stop." << endl;
   cin >> control;
+  getchar();
   cout << "\n";
-    
-  // cin.ignore() ignores that the enter key is pressed in the line above,
-  // allowing for getline() to read in user input
-  cin.ignore();
   }
   free(user_string);
 }
