@@ -30,5 +30,5 @@ int main(){
   cout << "The dereference of ppi = " << *ppi << endl;
   cout << "The address of ppi = " << &ppi << endl;
   cout << "The double dereference of ppi = " << **ppi <<"\n\n";
-  system(PAUSE);
+  system("PAUSE");
 }

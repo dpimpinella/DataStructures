@@ -58,6 +58,7 @@ Counter Counter::operator--(int ignore){
 void Counter::display(){
     cout << "Number of increments and decrements: " << numIncrements << "\n";
     cout << "Current state of counter: " << count << "\n";
+//    system("PAUSE");
 }
 
 void Counter::inc(){
