@@ -32,17 +32,21 @@ public:
   Money operator+(Money&);
   Money Subtract(Money&);
   Money operator-(Money&);
+  
   bool GreaterThan(Money&);
   bool operator>(Money&);
   bool LessThan(Money&);
   bool operator<(Money&);
+  
+  friend std::ostream& operator<<(std::ostream&, const Money&);
+  friend std::istream& operator>>(std::istream&, Money&);
+  
   void DisplayPercentage(double);
   double FormatCentsAsDollars(int);
-  void PrintMoney();
 };
 
 Money Money::Add(Money& other){
-  double dollars_and_cents = (this->cents_ + other.cents_) / 100;
+  double dollars_and_cents = (double)(this->cents_ + other.cents_) / 100;
   Money sum = Money(dollars_and_cents);
   return sum;
 }
@@ -52,7 +56,7 @@ Money Money::operator+(Money& other){
 }
 
 Money Money::Subtract(Money& other){
-  double dollars_and_cents = (this->cents_ - other.cents_) / 100;
+  double dollars_and_cents = (double)(this->cents_ - other.cents_) / 100;
   Money difference = Money(dollars_and_cents);
   return difference;
 }
@@ -84,25 +88,42 @@ double Money::FormatCentsAsDollars(int amount){
   return amount_to_display;
 }
 
-
 void Money::DisplayPercentage(double percentage){
   double decimal_percentage = percentage / 100;
   int percent_of_total = (int)(decimal_percentage * cents_);
   FormatCentsAsDollars(percent_of_total);
 }
 
-void Money::PrintMoney(){
-  double amount_to_display = FormatCentsAsDollars(this->cents_);
+std::ostream& operator<<(std::ostream& os, const Money& money){
   std::cout << std::fixed;
   std::cout << std::setprecision(2);
-  std::cout << "$" << amount_to_display << "\n";
+  os << (double)money.cents_ / 100;
+  return os;
+}
 
+std::istream& operator>>(std::istream& is, Money& money){
+  is >> money.cents_;
+  return is;
 }
 
 int main(){
-  Money money1 = Money(100);
-  Money money2 = Money(200);
-  bool answer = money2 < money1;
-  std::cout << answer;
-  return 0;
+  Money my_money = Money(80.72);
+  Money your_money;
+
+  std::cout << "Enter an amount of money (in cents)" << "\n";
+  std::cin >> your_money;
+  std::cout << "\n";
+  std::cout << "Your money: $";
+  std::cout << your_money << "\n";
+  std::cout << "My money: $" << my_money << "\n";
+  std::cout << "One of us is richer.\n";
+  if (my_money > your_money){
+    std::cout << "I have more money.\n";
+  }
+  if (my_money < your_money){
+    std::cout << "You have more money.\n";
+  }
+  std::cout << "$" << my_money << " + $" << your_money << " = " << my_money + your_money << "\n";
+  std::cout << "$" << my_money << " - $" << your_money << " = " << my_money - your_money << "\n";
+  system("PAUSE");
 }
